@@ -1,0 +1,22 @@
+# Ignore compiled Java classes
+*.class
+
+# Ignore log files
+*.log
+
+# Ignore IntelliJ IDEA files
+.idea/
+*.iml
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore output folders (if any)
+out/
+bin/
+
+# Ignore backup files
+*~
