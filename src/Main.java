@@ -8,20 +8,31 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
+        String[] cities = {
+            "Rome", "Milan", "Naples", "Florence", "Venice",
+            "Turin", "Bologna", "Genoa", "Verona", "Palermo",
+            "Bari", "Catania", "Padua", "Trieste", "Parma",
+            "Modena", "Reggio Calabria", "Perugia", "Ravenna", "Lecce"
+        };
+
         System.out.println("✝️ Welcome to the Papal Conclave Simulation!");
         System.out.print("How many cardinals will participate? (e.g., 5–20): ");
         int count = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         for (int i = 1; i <= count; i++) {
             System.out.print("Enter the name of Cardinal #" + i + ": ");
             String name = scanner.nextLine();
 
-            
-            int age = 65 + random.nextInt(10);       
-            int influence = 5 + random.nextInt(5);   
+            String city = cities[random.nextInt(cities.length)];
+            String fullName = "Cardinal " + name + " of " + city;
 
-            cardinals.add(new Cardinal(name, age, influence, true));
+            int age = 65 + random.nextInt(10);
+            int influence = 5 + random.nextInt(5);
+
+            cardinals.add(new Cardinal(fullName, age, influence, true));
+
+            System.out.println("🪶 " + fullName + " created | Age: " + age + ", Influence: " + influence);
         }
 
         ConclaveRoom conclave = new ConclaveRoom(cardinals);
