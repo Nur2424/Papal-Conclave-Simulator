@@ -232,12 +232,131 @@ With getters/setters, you can control what is allowed.
 ——————————————————————————————————————————————————————————————————————————————
 Summary
 ——————————————————————————————————————————————————————————————————————————————
-What	Purpose
-
-  Private fields	Hide data inside the class
-  Getters	Safely read private data
-  Setters	Safely change private data with validation
 
 
+——————————————————————————————————————————————————————————————————————————————
+🎭 4. ABSTRACTION
+——————————————————————————————————————————————————————————————————————————————
+
+📌 What is Abstraction?
+
+Abstraction means hiding the complex details of how something works and only showing the important parts that the user needs to interact with.
+
+It’s like when you drive a car:
+You don’t need to know how the engine works inside, you just use the steering wheel and pedals to drive.
+
+——————————————————————————————————————————————————————————————————————————————
+✅ How do you use abstraction in your project?
+——————————————————————————————————————————————————————————————————————————————
+
+You have a class ConclaveRoom which hides the complicated voting logic inside a simple method:
+
+conclave.runElection();
+
+	•	You don’t worry about how the votes are counted, or how the winner is chosen.
+	•	You just call runElection(), and the process happens inside the class.
+
+This is abstraction — the complex inner work is hidden behind a simple interface.
+
+——————————————————————————————————————————————————————————————————————————————
+📌 Why is abstraction useful?
+	•	It makes your code easier to use and understand because the user sees only what’s necessary.
+	•	It helps protect the code from mistakes because the inner logic is hidden.
+	•	It makes maintenance easier — you can change the inner workings without changing the way other parts use it.
+
+——————————————————————————————————————————————————————————————————————————————
+Example:
+
+public class ConclaveRoom {
+    private List<Cardinal> cardinals;
+
+    public ConclaveRoom(List<Cardinal> cardinals) {
+        this.cardinals = cardinals;
+    }
+
+    // This method hides all the voting details inside
+    public void runElection() {
+        // complex voting process here
+        // ...
+        System.out.println("Pope elected!");
+    }
+}
+
+You just call:
+
+conclave.runElection();
+
+And you get the result — you don’t need to understand or see the internal voting steps.
+
+——————————————————————————————————————————————————————————————————————————————
+Summary
+——————————————————————————————————————————————————————————————————————————————
+
+——————————————————————————————————————————————————————————————————————————————
+5️⃣ INHERITANCE
+——————————————————————————————————————————————————————————————————————————————
+
+What is inheritance?
+
+Inheritance lets you create a new class based on an existing class, inheriting its fields and methods — so you reuse code and add or change features.
+
+Think of it like a child inheriting traits from a parent.
+
+——————————————————————————————————————————————————————————————————————————————
+How could it work in your project?
+——————————————————————————————————————————————————————————————————————————————
+
+Suppose you want to create different types of Cardinals:
+	•	SeniorCardinal — older, more experienced, maybe more influence
+	•	JuniorCardinal — younger, less influence
+
+You can make a base class Cardinal and then create:
+
+public class SeniorCardinal extends Cardinal {
+    // extra fields or methods for seniors
+}
+
+public class JuniorCardinal extends Cardinal {
+    // extra fields or methods for juniors
+}
+
+They inherit all Cardinal properties but can have special behavior.
 
 
+Benefits
+	•	Avoid repeating code
+	•	Organize related classes in a hierarchy
+	•	Easily extend or customize functionality
+
+——————————————————————————————————————————————————————————————————————————————
+6️⃣ POLYMORPHISM
+——————————————————————————————————————————————————————————————————————————————
+
+What is polymorphism?
+
+Polymorphism means “many forms.” It allows objects of different classes to be treated as objects of a common superclass, but each can behave differently when methods are called.
+
+——————————————————————————————————————————————————————————————————————————————
+In your project
+——————————————————————————————————————————————————————————————————————————————
+
+If you have subclasses like SeniorCardinal and JuniorCardinal, you can treat them both as Cardinal:
+
+ArrayList<Cardinal> cardinals = new ArrayList<>();
+cardinals.add(new SeniorCardinal(...));
+cardinals.add(new JuniorCardinal(...));
+
+When you call a method like vote() on each, the specific implementation in the subclass will run:
+
+for (Cardinal c : cardinals) {
+    c.vote();
+}
+
+Each cardinal votes differently based on their class.
+
+——————————————————————————————————————————————————————————————————————————————
+Benefits
+——————————————————————————————————————————————————————————————————————————————
+	•	Write flexible and extensible code
+	•	Use the same interface for different behaviors
+	•	Easily add new types without changing existing code
