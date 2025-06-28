@@ -1,0 +1,243 @@
+——————————————————————————————————————————————————————————————————————————————
+🧱 1. CLASSES 
+——————————————————————————————————————————————————————————————————————————————
+
+📌 What is a class?
+- A class is a blueprint for creating objects.
+- It defines what properties (fields) and behaviors (methods) an object will have.
+- In Java, everything revolves around classes.
+
+🔧 How we used classes in this project:
+
+——————————————————————————————————————————————————————————————————————————————
+🟥 Cardinal class
+——————————————————————————————————————————————————————————————————————————————
+Purpose: Represents each individual cardinal.
+
+Fields (data):
+- String name → the cardinal’s full title (e.g., "Cardinal Francesco of Genoa")
+- int age → age of the cardinal
+- int influence → a number representing the cardinal’s influence in voting
+- boolean canVote → whether the cardinal is eligible to vote
+
+Possible methods (behavior):
+- Getters to access the data (getName(), getAge(), etc.)
+- toString() to print details (optional)
+
+🛠 We create many Cardinal objects using this class template.
+
+——————————————————————————————————————————————————————————————————————————————
+🟦 ConclaveRoom class
+——————————————————————————————————————————————————————————————————————————————
+Purpose: Controls the simulation of the papal conclave.
+
+Fields:
+- List<Cardinal> cardinals → list of all cardinals involved in voting
+
+Methods:
+- runElection() → runs voting rounds until one cardinal is chosen
+- voteRound() → (optional) simulates a single round of voting
+- countVotes() → (optional) counts votes and checks for majority
+
+🛠 This class contains most of the logic for the project.
+
+——————————————————————————————————————————————————————————————————————————————
+🟩 Main class
+——————————————————————————————————————————————————————————————————————————————
+Purpose: This is where your Java program starts.
+
+Tasks:
+- Asks user for input (names of cardinals)
+- Generates random age, influence, and city for each cardinal
+- Creates Cardinal objects and adds them to the list
+- Starts the simulation by calling ConclaveRoom.runElection()
+
+It contains the special method:
+public static void main(String[] args) { ... }
+
+📌 This method is the entry point for your program — Java runs it first.
+
+——————————————————————————————————————————————————————————————————————————————
+📦 Summary of Class Roles:
+——————————————————————————————————————————————————————————————————————————————
+- Cardinal → Data model (blueprint for each cardinal)
+- ConclaveRoom → Logic controller (runs the simulation)
+- Main → App runner (gets input and launches simulation)
+
+✅ This is a great use of object-oriented design:
+- Clear separation of roles
+- Organized code
+- Easy to expand later (add more logic or new features)
+
+——————————————————————————————————————————————————————————————————————————————
+🧍‍♂️ 2. OBJECTS (Instances)
+——————————————————————————————————————————————————————————————————————————————
+
+📌 What is an Object?
+An object is a real example of a class.
+If a class is the blueprint, then an object is the thing built from it.
+
+💡 Think of a class as a recipe (Cardinal),
+and each object is a unique dish made from it (like "Francesco", "Giovanni").
+
+✅ In this project:
+We use the 'Cardinal' class to create different cardinals.
+
+Example:
+    Cardinal francesco = new Cardinal("Francesco", 70, 8, true);
+
+This means:
+- francesco is an object (or instance) of the Cardinal class
+- He has his own name, age, influence score, and voting ability
+
+We create many objects and store them in a list:
+    ArrayList<Cardinal> cardinals = new ArrayList<>();
+    cardinals.add(new Cardinal("Mateo", 70, 8, true));
+    cardinals.add(new Cardinal("Giovanni", 68, 6, true));
+    cardinals.add(new Cardinal("Luis", 73, 7, true));
+    ...
+
+Each line creates a new, unique object.
+
+——————————————————————————————————————————————————————————————————————————————
+📦 Summary
+——————————————————————————————————————————————————————————————————————————————
+- Object = a real instance of a class (like 1 cardinal)
+- Each object has its own values for the class’s variables
+- All objects share the same structure, but have different data
+- We can store and manage them easily in an ArrayList
+
+——————————————————————————————————————————————————————————————————————————————
+🔐 3. ENCAPSULATION & Getters / Setters
+——————————————————————————————————————————————————————————————————————————————
+
+📌 What is encapsulation?
+
+Encapsulation means keeping the internal details (data) of a class hidden from the outside world and only exposing a controlled way to access or modify that data.
+
+You do this by:
+	•	Making the fields (variables) private
+	•	Providing public methods to get or change those fields safely
+
+——————————————————————————————————————————————————————————————————————————————
+
+Why use getters and setters?
+	•	To protect data from being changed randomly or incorrectly
+	•	To control access (for example, you can validate input inside setters)
+	•	To hide implementation details (you can change internal logic without changing how others use the class)
+
+——————————————————————————————————————————————————————————————————————————————
+How do getters and setters look?
+——————————————————————————————————————————————————————————————————————————————
+Suppose your Cardinal class has a private field:
+
+private String name;
+
+You write a getter to read the name:
+
+public String getName() {
+    return name;
+}
+
+You write a setter to change the name:
+
+public void setName(String name) {
+    this.name = name;
+}
+——————————————————————————————————————————————————————————————————————————————
+Example in your Cardinal class:
+——————————————————————————————————————————————————————————————————————————————
+
+public class Cardinal {
+    private String name;
+    private int age;
+    private int influence;
+    private boolean canVote;
+
+    // Constructor
+    public Cardinal(String name, int age, int influence, boolean canVote) {
+        this.name = name;
+        this.age = age;
+        this.influence = influence;
+        this.canVote = canVote;
+    }
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter for name (optional)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter for age
+    public void setAge(int age) {
+        if (age >= 0) {  // example validation
+            this.age = age;
+        }
+    }
+
+    // Similarly for influence and canVote
+    public int getInfluence() {
+        return influence;
+    }
+
+    public void setInfluence(int influence) {
+        if (influence >= 0) {
+            this.influence = influence;
+        }
+    }
+
+    public boolean canVote() {
+        return canVote;
+    }
+
+    public void setCanVote(boolean canVote) {
+        this.canVote = canVote;
+    }
+}
+
+——————————————————————————————————————————————————————————————————————————————
+How to use them?
+——————————————————————————————————————————————————————————————————————————————
+
+Cardinal c = new Cardinal("Francesco", 70, 8, true);
+
+// Read name safely
+System.out.println("Name: " + c.getName());
+
+// Change influence safely
+c.setInfluence(9);
+
+——————————————————————————————————————————————————————————————————————————————
+Why is this better than public fields?
+——————————————————————————————————————————————————————————————————————————————
+If fields were public:
+
+public String name;
+
+Anyone could do:
+
+c.name = null;  // or garbage data
+
+With getters/setters, you can control what is allowed.
+
+——————————————————————————————————————————————————————————————————————————————
+Summary
+——————————————————————————————————————————————————————————————————————————————
+What	Purpose
+
+  Private fields	Hide data inside the class
+  Getters	Safely read private data
+  Setters	Safely change private data with validation
+
+
+
+
