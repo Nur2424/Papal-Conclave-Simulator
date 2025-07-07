@@ -10,8 +10,8 @@ public class Cardinal {
         this.age = age;
         this.influence = influence;
         this.isCandidate = isCandidate;
-        this.votesReceived = 0;
-    }
+        this.votesReceived = 0;    // Starts votesReceived at 0 (since voting hasn’t started yet)
+    }        // Cardinal c = new Cardinal("John", 76, 85, true);
 
     public String getName() {
         return name;
@@ -39,10 +39,10 @@ public class Cardinal {
 
     public void resetVotes() {
         this.votesReceived = 0;
-    }
+    }    // These methods allow other classes to read the cardinal’s information safely (since the variables are private).
 
     @Override
     public String toString() {
         return "Cardinal " + name + " (Age: " + age + ", Influence: " + influence + ")";
-    }
-}
+    }    // “I used @Override to change the built-in toString() method, so when I print a Cardinal, 
+}      //it shows the name, age, and influence instead of a confusing code. It makes the output clear and easy to understand}
