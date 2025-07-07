@@ -50,3 +50,13 @@ public class ConclaveRoom {
         }
     }
 }
+
+/*
+The ConclaveRoom class handles the actual logic of the papal election. 
+    It stores a list of cardinals and uses a loop to simulate voting rounds.
+    In each round, every cardinal randomly votes for another one (but not for themselves).
+    If a cardinal receives more than half the total votes, they’re declared Pope. 
+    Otherwise, the voting continues until someone wins. 
+    I used Java’s Random class to make the simulation realistic and unpredictable. 
+    This class ties together the behavior of individual cardinals with the overall election process.
+*/
