@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class ConclaveRoom {
@@ -18,27 +17,24 @@ public class ConclaveRoom {
         while (!popeElected) {
             System.out.println("--- Round " + round + " ---");
 
-            // Reset previous votes
             for (Cardinal c : cardinals) {
                 c.resetVotes();
             }
 
-            // Each cardinal votes
             for (Cardinal voter : cardinals) {
                 Cardinal voteFor;
                 do {
                     voteFor = cardinals.get(rand.nextInt(cardinals.size()));
-                } while (voteFor == voter); // Can't vote for yourself
+                } while (voteFor == voter); 
 
                 voteFor.receiveVote();
                 System.out.println(voter.getName() + " votes for " + voteFor.getName());
             }
 
-            // Check if anyone has majority
             int majority = cardinals.size() / 2 + 1;
             for (Cardinal c : cardinals) {
                 if (c.getVotesReceived() >= majority) {
-                    System.out.println("🤍 White smoke rises!");
+                    System.out.println("🎉 White smoke rises!");
                     System.out.println("🎉 " + c.getName() + " has been elected Pope!");
                     popeElected = true;
                     break;
@@ -46,8 +42,8 @@ public class ConclaveRoom {
             }
 
             if (!popeElected) {
-                System.out.println("🚬 Black smoke rises... No pope yet.
-");
+                System.out.println("Black smoke rises... No pope yet.");
+
             }
 
             round++;
