@@ -7,7 +7,7 @@
 - It defines what properties (fields) and behaviors (methods) an object will have.
 - In Java, everything revolves around classes.
 
-🔧 How we used classes in this project:
+🔧 How i used classes in this project:
 
 ——————————————————————————————————————————————————————————————————————————————
 🟥 Cardinal class
@@ -24,7 +24,7 @@ Possible methods (behavior):
 - Getters to access the data (getName(), getAge(), etc.)
 - toString() to print details (optional)
 
-🛠 We create many Cardinal objects using this class template.
+🛠 I create many Cardinal objects using this class template.
 
 ——————————————————————————————————————————————————————————————————————————————
 🟦 ConclaveRoom class
@@ -229,9 +229,6 @@ c.name = null;  // or garbage data
 
 With getters/setters, you can control what is allowed.
 
-——————————————————————————————————————————————————————————————————————————————
-Summary
-——————————————————————————————————————————————————————————————————————————————
 
 
 ——————————————————————————————————————————————————————————————————————————————
@@ -288,9 +285,6 @@ conclave.runElection();
 
 And you get the result — you don’t need to understand or see the internal voting steps.
 
-——————————————————————————————————————————————————————————————————————————————
-Summary
-——————————————————————————————————————————————————————————————————————————————
 
 ——————————————————————————————————————————————————————————————————————————————
 5️⃣ INHERITANCE
@@ -360,3 +354,182 @@ Benefits
 	•	Write flexible and extensible code
 	•	Use the same interface for different behaviors
 	•	Easily add new types without changing existing code
+
+
+——————————————————————————————————————————————————————————————————————————————
+✅ What is a Static Method?
+——————————————————————————————————————————————————————————————————————————————
+
+A static method belongs to the class itself, not to any specific object.
+You can call it without creating an object of the class.
+
+🔧 Example from your code:
+
+public static void main(String[] args) {
+    // ...
+}
+
+main() is static because the Java Virtual Machine (JVM) calls it without creating an object of your class.
+
+——————————————————————————————————————————————————————————————————————————————
+📣 How to explain it in your presentation:
+
+“A static method belongs to the class and can be called without creating an object. For example, main() is static so the program can run without needing to instantiate anything.”
+——————————————————————————————————————————————————————————————————————————————
+
+🚫 What is a Non-Static Method?
+
+A non-static method (also called an instance method) belongs to an object.
+To use it, you must create an object of the class first.
+
+🔧 Example from your code:
+
+Cardinal c1 = new Cardinal("John", 75, "Italy");
+c1.getAge(); // getAge() is non-static
+
+getAge() is non-static because it works on a specific cardinal object. You must create a Cardinal before calling it.
+
+——————————————————————————————————————————————————————————————————————————————
+📣 How to explain it:
+
+“A non-static method is tied to an object and needs an object to be used. For example, to get a cardinal’s age, I need to create a Cardinal object and then call getAge() on it.”
+——————————————————————————————————————————————————————————————————————————————
+
+🧠 When to use Static vs Non-Static?
+
+Use Static When…			Use Non-Static When…
+The method doesn’t need object data	The method uses or changes object state
+You want to run something globally	You are working with specific objects
+
+
+⸻
+
+🧪 Quick Test Question (just in case):
+
+Q: Can you call a non-static method from a static method?
+A: Not directly. You need to create an object first and then call the method.
+
+Great choice, Nur! Real-world analogies make it much easier to remember and explain concepts clearly — especially during an exam or presentation.
+
+⸻
+
+🏠 Real-World Analogy: Class, Static, and Non-Static Methods
+
+👷 Imagine a class as a blueprint for building houses.
+	•	The class is the blueprint (e.g., Cardinal).
+	•	The object is an actual house built from that blueprint (e.g., c1 = new Cardinal()).
+
+⸻
+
+🛠️ Static Method = Instructions that belong to the blueprint itself
+
+Let’s say there’s a static method like:
+
+public static void printWelcomeMessage() {
+    System.out.println("Welcome to the Conclave!");
+}
+
+This is like a general instruction written on the blueprint, saying:
+
+“Every house should have a welcome mat.”
+
+You don’t need to build a house to read this instruction — it’s on the plan.
+
+✅ You can access it without creating any house.
+
+⸻
+
+🚪 Non-Static Method = Actions for a specific house
+
+Now imagine a non-static method like:
+
+public int getAge() {
+    return this.age;
+}
+
+This is like asking:
+
+“What color is the door of this specific house?”
+
+You can’t answer that by just looking at the blueprint — you need to go to a real house and check.
+
+✅ You need to build a house (create an object) before asking it.
+
+⸻
+
+🧠 Final Summary
+
+Concept			Real-World Analogy		Java Example
+Class			Blueprint			Cardinal class
+Object			Actual house			Cardinal c1 = new Cardinal(...)
+Static Method		General rule on the blueprint	main() or printWelcomeMessage()
+Non-Static Method	House-specific feature		c1.getAge()
+
+
+Excellent follow-up, Nur! Let me explain that clearly:
+
+⸻
+
+🔧 What is a Blueprint?
+
+A blueprint is a detailed plan or design used to build something — like a house.
+
+It doesn’t build the house itself, but it tells you:
+	•	how many rooms there will be
+	•	where the doors go
+	•	what size the windows are
+	•	etc.
+
+In programming terms:
+
+⸻
+
+💻 In Java:
+	•	A class is like the blueprint.
+	•	It defines what an object will be like — what data it has (fields) and what it can do (methods).
+	•	But on its own, a class does nothing until you build an object from it.
+
+⸻
+
+🧱 Real Example from Your Project:
+
+public class Cardinal {
+    private String name;
+    private int age;
+    private String country;
+    
+    public Cardinal(String name, int age, String country) {
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+This Cardinal class is your blueprint.
+
+It says:
+	•	Every cardinal has a name, age, and country.
+	•	You can get their age using getAge().
+
+But this class alone doesn’t create a cardinal.
+You have to use it like this:
+
+Cardinal c1 = new Cardinal("John", 75, "Italy");
+
+Now, you’ve built an actual object (a real “house”) based on the blueprint.
+
+⸻
+
+🧠 Simple Analogy Summary:
+
+Concept		Real World		Java Equivalent
+Blueprint	House design		Class (e.g., Cardinal)
+Actual house	Built from blueprint	Object (e.g., c1)
+
+
+
+
